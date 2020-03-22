@@ -45,6 +45,7 @@ VersionInfoProductVersion={#MyAppVersion}
 VersionInfoProductTextVersion={#MyAppName} v{#MyAppVersion}
 
 ArchitecturesInstallIn64BitMode=x64
+
 PrivilegesRequired=admin
 ChangesEnvironment=yes
 
@@ -54,23 +55,23 @@ Name: rus; MessagesFile: compiler:Languages\Russian.isl
 
 [CustomMessages]
 en.AddPathMessage=Add the path to the application in the system variable PATH
-rus.AddPathMessage=Добавьте путь к приложению в системную переменную PATH
+rus.AddPathMessage=Р”РѕР±Р°РІСЊС‚Рµ РїСѓС‚СЊ Рє РїСЂРёР»РѕР¶РµРЅРёСЋ РІ СЃРёСЃС‚РµРјРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ PATH
 en.AddCmdMessage=Add a command line item to the context menu
-rus.AddCmdMessage=Добавить в контекстное меню пункт командной строки
+rus.AddCmdMessage=Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕРЅС‚РµРєСЃС‚РЅРѕРµ РјРµРЅСЋ РїСѓРЅРєС‚ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
 en.ContextCommand=Command line
-rus.ContextCommand=Командная строка
+rus.ContextCommand=РљРѕРјР°РЅРґРЅР°СЏ СЃС‚СЂРѕРєР°
 en.ContextCommandUser=Run CMD User
-rus.ContextCommandUser=Запустить CMD Пользователь
+rus.ContextCommandUser=Р—Р°РїСѓСЃС‚РёС‚СЊ CMD РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 en.ContextCommandAdmin=Run CMD Administrator
-rus.ContextCommandAdmin=Запустить CMD Администратор
+rus.ContextCommandAdmin=Р—Р°РїСѓСЃС‚РёС‚СЊ CMD РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ
 en.RegistryModule=Registering module...
-rus.RegistryModule=Регистрация модуля...
+rus.RegistryModule=Р РµРіРёСЃС‚СЂР°С†РёСЏ РјРѕРґСѓР»СЏ...
 en.UnblockSubdirs=Unblock all Files...
-rus.UnblockSubdirs=Разблокировать все файлы...
+rus.UnblockSubdirs=Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РІСЃРµ С„Р°Р№Р»С‹...
 en.UnblockFile=Unblock File...
-rus.UnblockFile=Разблокировать файл...
+rus.UnblockFile=Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ С„Р°Р№Р»...
 en.UninstallApp=Uninstall 
-rus.UninstallApp=Деинсталлировать
+rus.UninstallApp=Р”РµРёРЅСЃС‚Р°Р»Р»РёСЂРѕРІР°С‚СЊ
 
 [Icons]
 Name: {group}\{cm:UninstallApp} {#MyAppName}; Filename: {uninstallexe}
