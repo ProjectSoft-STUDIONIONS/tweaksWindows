@@ -1,0 +1,8 @@
+bin/**/*.exe
+bin/**/*.txt
+bin/*.exe
+bin/*.txt
+installer/**/*.*
+installer/*.*
+test/**/*.*
+test/*.*
