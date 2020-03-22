@@ -45,7 +45,6 @@ VersionInfoProductVersion={#MyAppVersion}
 VersionInfoProductTextVersion={#MyAppName} v{#MyAppVersion}
 
 ArchitecturesInstallIn64BitMode=x64
-
 PrivilegesRequired=admin
 ChangesEnvironment=yes
 
