@@ -1,1 +1,2 @@
 *.iss -crlf working-tree-encoding=CP1251
+*.isl -crlf working-tree-encoding=CP1251
