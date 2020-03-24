@@ -1,5 +1,5 @@
 #define MyAppName "Streams installer"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1.1.0"
 #define MyAppPublisher "ProjectSoft"
 #define MyAppURL "https://projectsoft.ru/"
 
