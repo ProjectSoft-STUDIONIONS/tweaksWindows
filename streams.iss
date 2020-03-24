@@ -1,5 +1,5 @@
 #define MyAppName "Streams installer"
-#define MyAppVersion "1.1.1.0"
+#define MyAppVersion "1.1.2.0"
 #define MyAppPublisher "ProjectSoft"
 #define MyAppURL "https://projectsoft.ru/"
 
@@ -44,11 +44,15 @@ VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
 VersionInfoProductTextVersion={#MyAppName} v{#MyAppVersion}
 
-ArchitecturesInstallIn64BitMode=x64
+ArchitecturesInstallIn64BitMode=
 
 PrivilegesRequired=admin
 ChangesEnvironment=true
 LicenseFile=bin\Eula.txt
+VersionInfoVersion={#MyAppVersion}
+VersionInfoCompany=ProjectSoft®
+VersionInfoTextVersion={#MyAppVersion}
+VersionInfoCopyright=PojectSoft © 2020
 
 [Languages]
 Name: en; MessagesFile: compiler:Default.isl
