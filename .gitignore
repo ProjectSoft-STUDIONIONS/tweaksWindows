@@ -1,8 +1,15 @@
+bin/**/__*
 bin/**/*.exe
 bin/**/*.txt
+bin/**/*.local
+bin/**/*.identcache
+bin/**/*.stat
 bin/*.exe
 bin/*.txt
 installer/**/*.*
 installer/*.*
 test/**/*.*
 test/*.*
+tests/**/*.*
+tests/*.*
+!bin/**/unblock.exe
