@@ -3,7 +3,6 @@ program unblock;
 
 
 uses
-  Vcl.Forms,
   Winapi.Windows,
   ShellAPI,
   System.SysUtils;
@@ -15,10 +14,10 @@ var
   ParamFile: String;
   CmdChar: PWideChar;
   ExePath: String;
+
 begin
   {$IFDEF MSWINDOWS}
   {$WARN SYMBOL_PLATFORM OFF}
-  Application.Initialize;
   ExePath := ExtractFilePath(ParamStr(0));
   if(ParamCount>=1) then
   begin
@@ -27,15 +26,14 @@ begin
     begin
       // Directory
       CmdChar := PWideChar('-d -s "' + ParamFile +'"');
-      ShellExecute(Application.Handle, 'open', PWideChar(ExePath +'streams.exe'), CmdChar, nil, SW_HIDE);
+      ShellExecute(0, 'open', PWideChar(ExePath +'streams.exe'), CmdChar, nil, 0);
     end;
     if(FileExists(ParamFile))then
     begin
       // File
       CmdChar := PWideChar('-d "' + ParamFile + '"');
-      ShellExecute(Application.Handle, 'open', PWideChar(ExePath +'streams.exe'), CmdChar, nil, SW_HIDE);
+      ShellExecute(0, 'open', PWideChar(ExePath +'streams.exe'), CmdChar, nil, 0);
     end;
     {$ENDIF}
   end;
-  Application.Run;
 end.
