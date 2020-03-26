@@ -1,4 +1,6 @@
 bin/**/__*
+*/**/nogit.*
+nogit.*
 bin/**/*.exe
 bin/**/*.txt
 bin/**/*.local

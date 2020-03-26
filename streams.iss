@@ -27,7 +27,7 @@ DisableReadyPage=true
 DisableReadyMemo=true
 DisableFinishedPage=false
 FlatComponentsList=false
-AlwaysShowComponentsList=no
+AlwaysShowComponentsList=false
 ShowComponentSizes=false
 WindowShowCaption=false
 WindowResizable=false
@@ -42,41 +42,16 @@ ShowLanguageDialog=yes
 
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
-VersionInfoProductTextVersion={#MyAppName} v{#MyAppVersion}
-
-ArchitecturesInstallIn64BitMode=
 
 PrivilegesRequired=admin
-ChangesEnvironment=true
-LicenseFile=bin\Eula.txt
-VersionInfoVersion={#MyAppVersion}
-VersionInfoCompany=ProjectSoft®
-VersionInfoTextVersion={#MyAppVersion}
-VersionInfoCopyright=PojectSoft © 2020
+InfoBeforeFile=bin\Eula.txt
+ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
 Name: en; MessagesFile: compiler:Default.isl
 Name: rus; MessagesFile: compiler:Languages\Russian.isl
 
-[CustomMessages]
-en.AddPathMessage=Add the path to the application in the system variable PATH
-rus.AddPathMessage=Добавьте путь к приложению в системную переменную PATH
-en.AddCmdMessage=Add a command line item to the context menu
-rus.AddCmdMessage=Добавить в контекстное меню пункт командной строки
-en.ContextCommand=Command line
-rus.ContextCommand=Командная строка
-en.ContextCommandUser=Run CMD User
-rus.ContextCommandUser=Запустить CMD Пользователь
-en.ContextCommandAdmin=Run CMD Administrator
-rus.ContextCommandAdmin=Запустить CMD Администратор
-en.RegistryModule=Registering module...
-rus.RegistryModule=Регистрация модуля...
-en.UnblockSubdirs=Unblock all Files...
-rus.UnblockSubdirs=Разблокировать все файлы...
-en.UnblockFile=Unblock File...
-rus.UnblockFile=Разблокировать файл...
-en.UninstallApp=Uninstall
-rus.UninstallApp=Деинсталлировать
+#include "comonMessage.iss"
 
 [Icons]
 Name: {group}\{cm:UninstallApp} {#MyAppName}; Filename: {uninstallexe}
@@ -88,49 +63,15 @@ Source: bin\unblock.exe; DestDir: {app}; DestName: unblock.exe; Flags: solidbrea
 [Tasks]
 Name: add_streams_path; Description: {cm:AddPathMessage}; Flags: exclusive
 Name: add_cmd; Description: {cm:AddCmdMessage}
+Name: good_mode; Description: {cm:GoodModeTask}
+Name: reload_explorer; Description: {cm:ReloadExplorerTask}
+Name: copy_path; Description: {cm:CopyPathTask}
+;Name: shutdown_task; Description: Варианты завершения работы или с вариантами перезагрузки
 
 [Run]
 Filename: {sys}\rundll32.exe; WorkingDir: {sys}; Parameters: user32.dll,UpdatePerUserSystemParameters; StatusMsg: {cm:RegistryModule}
 
-[Registry]
-; Unblock Files Directory Background
-Root: HKCR; Subkey: Directory\Background\shell\unblock; ValueType: string; ValueName: MUIVerb; ValueData: {cm:UnblockSubdirs}; Flags: uninsdeletekey
-Root: HKCR; Subkey: Directory\Background\shell\unblock; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,2; Flags: uninsdeletekey
-Root: HKCR; Subkey: Directory\Background\shell\unblock\command; ValueType: string; ValueData: "{app}\unblock.exe ""%V"""; Flags: uninsdeletekey
-; Unblock Files Directory
-Root: HKCR; Subkey: Directory\shell\unblock; ValueType: string; ValueName: MUIVerb; ValueData: {cm:UnblockSubdirs}; Flags: uninsdeletekey
-Root: HKCR; Subkey: Directory\shell\unblock; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,2; Flags: uninsdeletekey
-Root: HKCR; Subkey: Directory\shell\unblock\command; ValueType: string; ValueData: "{app}\unblock.exe ""%V"""; Flags: uninsdeletekey
-; Unblock File
-Root: HKCR; Subkey: *\shell\unblock; ValueType: string; ValueName: MUIVerb; ValueData: {cm:UnblockFile}; Flags: uninsdeletekey
-Root: HKCR; Subkey: *\shell\unblock; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,2; Flags: uninsdeletekey
-Root: HKCR; Subkey: *\shell\unblock\command; ValueType: string; ValueData: "{app}\unblock.exe ""%1"""; Flags: uninsdeletekey
-
-; Directory Background
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,0; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd; ValueType: string; ValueName: SubCommands; ValueData: ; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextCommand}; Flags: uninsdeletekey; Tasks: add_cmd
-; Directory Background User
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd\shell\default_user; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,0; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd\shell\default_user; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextCommandUser}; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd\shell\default_user\command; ValueType: string; ValueName: ; ValueData: "cmd.exe /s /k pushd ""%V"" && title %V && echo off && cls"; Flags: uninsdeletekey; Tasks: add_cmd
-; Directory Background Admin
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd\shell\runas; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,1; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd\shell\runas; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextCommandAdmin}; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\Background\shell\user_cmd\shell\runas\command; ValueType: string; ValueName: ; ValueData: "cmd.exe /s /k pushd ""%V"" && title %V && echo off && cls"; Flags: uninsdeletekey; Tasks: add_cmd
-
-; Directory
-Root: HKCR; Subkey: Directory\shell\user_cmd; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,0; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\shell\user_cmd; ValueType: string; ValueName: SubCommands; ValueData: ; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\shell\user_cmd; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextCommand}; Flags: uninsdeletekey; Tasks: add_cmd
-; Directory User
-Root: HKCR; Subkey: Directory\shell\user_cmd\shell\default_user; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,0; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\shell\user_cmd\shell\default_user; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextCommandUser}; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\shell\user_cmd\shell\default_user\command; ValueType: string; ValueName: ; ValueData: "cmd.exe /s /k pushd ""%V"" && title %V && echo off && cls"; Flags: uninsdeletekey; Tasks: add_cmd
-; Directory Admin
-Root: HKCR; Subkey: Directory\shell\user_cmd\shell\runas; ValueType: string; ValueName: Icon; ValueData: {app}\unblock.exe,1; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\shell\user_cmd\shell\runas; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextCommandAdmin}; Flags: uninsdeletekey; Tasks: add_cmd
-Root: HKCR; Subkey: Directory\shell\user_cmd\shell\runas\command; ValueType: string; ValueName: ; ValueData: "cmd.exe /s /k pushd ""%V"" && title %V && echo off && cls"; Flags: uninsdeletekey; Tasks: add_cmd
+#include "my_tweaks.iss"
 
 [UninstallDelete]
 Name: {app}\*.*; Type: filesandordirs
