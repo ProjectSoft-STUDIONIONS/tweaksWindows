@@ -34,8 +34,8 @@ begin
   begin
     ParamFile := ParamStr(1);
     // Если передан только один параметр - Директория или Файл
-    // Если на файле не стоит атрибут Скрытый - файл обрабатываем.
-    // У файла не должно стоять атрибута "только для чтения".
+    // Если на файле не стоит атрибут Скрытый - файл обрабатываем,
+    // чтобы снять атрибут "только для чтения", если таковой имеется
     // Устанавливаем для файла FILE_ATTRIBUTE_NORMAL
     // Всё остальное ложится на плечи stream.
     if(ParamCount = 1) then
@@ -50,8 +50,11 @@ begin
           Attr := FileGetAttr(files[i]);
           if(Attr = (Attr and not FILE_ATTRIBUTE_HIDDEN)) then
           begin
-            //Msg := Msg + files[i] + #10#13;
-            FileSetAttr(files[i], FILE_ATTRIBUTE_NORMAL);
+            if(Attr = (Attr or FILE_ATTRIBUTE_READONLY)) then
+            begin
+              //Msg := Msg + files[i] + #10#13;
+              FileSetAttr(files[i], FILE_ATTRIBUTE_NORMAL);
+            end;
           end;
         end;
         Sleep(100);
