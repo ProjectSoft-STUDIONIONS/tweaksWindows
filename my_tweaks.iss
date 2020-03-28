@@ -53,19 +53,19 @@ Root: HKCR; SubKey: DesktopBackground\shell\ReloadExplorer; ValueType: string; V
 
 Root: HKCR; SubKey: DesktopBackground\shell\ReloadExplorer; ValueType: string; ValueName: Icon; ValueData: explorer.exe,0; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
-Root: HKCR; SubKey: DesktopBackground\shell\ReloadExplorer\command; ValueType: string; ValueData: "cmd.exe /q /c (taskkill /f /im ""explorer.exe"" >nul && start explorer.exe >nul)"; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
+Root: HKCR; SubKey: DesktopBackground\shell\ReloadExplorer\command; ValueType: string; ValueData: "cmd.exe /q /c (taskkill /f /im explorer.exe >nul && start explorer.exe >nul)"; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
 Root: HKCR; SubKey: Directory\Background\shell\ReloadExplorer; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextReloadExplorer}; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
 Root: HKCR; SubKey: Directory\Background\shell\ReloadExplorer; ValueType: string; ValueName: Icon; ValueData: explorer.exe,0; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
-Root: HKCR; SubKey: Directory\Background\shell\ReloadExplorer\command; ValueType: string; ValueData: "cmd.exe /q /c (taskkill /f /im ""explorer.exe"" >nul && start explorer.exe >nul)"; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
+Root: HKCR; SubKey: Directory\Background\shell\ReloadExplorer\command; ValueType: string; ValueData: "cmd.exe /q /c (taskkill /f /im explorer.exe >nul && start explorer.exe >nul)"; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
 Root: HKCR; SubKey: Directory\shell\ReloadExplorer; ValueType: string; ValueName: MUIVerb; ValueData: {cm:ContextReloadExplorer}; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
 Root: HKCR; SubKey: Directory\shell\ReloadExplorer; ValueType: string; ValueName: Icon; ValueData: explorer.exe,0; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
-Root: HKCR; SubKey: Directory\shell\ReloadExplorer\command; ValueType: string; ValueData: "cmd.exe /q /c (taskkill /f /im ""explorer.exe"" >nul && start explorer.exe >nul)"; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
+Root: HKCR; SubKey: Directory\shell\ReloadExplorer\command; ValueType: string; ValueData: "cmd.exe /q /c (taskkill /f /im explorer.exe >nul && start explorer.exe >nul)"; Flags: uninsdeletevalue uninsdeletekeyifempty; Tasks: reload_explorer
 
 ; Копирование пути
 ; Для всех файлов

@@ -1,5 +1,7 @@
 program unblock;
-
+(*
+Программа не имеет окон
+*)
 uses
   TypInfo,
   Winapi.Windows,
@@ -25,6 +27,7 @@ var
   CopyStr: String;
   StrVal: TStringSet;
   Attr: integer;
+  wnd: Cardinal;
   //Msg: String;
 begin
   {$IFDEF MSWINDOWS}
@@ -33,11 +36,13 @@ begin
   if(ParamCount>=1) then
   begin
     ParamFile := ParamStr(1);
-    // Если передан только один параметр - Директория или Файл
-    // Если на файле не стоит атрибут Скрытый - файл обрабатываем,
-    // чтобы снять атрибут "только для чтения", если таковой имеется
-    // Устанавливаем для файла FILE_ATTRIBUTE_NORMAL
-    // Всё остальное ложится на плечи stream.
+    (*
+    Если передан только один параметр - Директория или Файл
+    Если на файле не стоит атрибут Скрытый - файл обрабатываем,
+    чтобы снять атрибут "только для чтения", если таковой имеется
+    Устанавливаем для файла FILE_ATTRIBUTE_NORMAL
+    Всё остальное ложится на плечи stream.
+    *)
     if(ParamCount = 1) then
     begin
       if(DirectoryExists(ParamFile)) then
@@ -61,8 +66,7 @@ begin
         //MessageBox(0, PWideChar(Msg), 'Title', MB_ICONASTERISK);
         CmdChar := PWideChar('-d -s "' + ParamFile +'"');
         ShellExecute(0, 'open', PWideChar(ExePath +'streams.exe'), CmdChar, nil, 0);
-      end;
-      if(FileExists(ParamFile))then
+      end else if(FileExists(ParamFile))then
       begin
         // File
         Attr := FileGetAttr(ParamFile);
@@ -75,10 +79,12 @@ begin
         end;
       end;
     end else if(ParamCount > 1) then
-    // Если передано два и более параметров.
-    // Мы обрабатываем только два.
-    // Первый - всегда Файл или директория
-    // Второй - тип операции - TStringSet
+    (*
+    Если передано два и более параметров.
+    Мы обрабатываем только два.
+    Первый - всегда Файл или директория
+    Второй - тип операции - TStringSet
+    *)
     begin
       // Copy path, file, name
       Param2 := ParamStr(2);
